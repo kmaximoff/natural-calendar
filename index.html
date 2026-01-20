@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Calendar | 13-Month Lunar Calendar System</title>
+    <meta name="description"
+        content="A natural calendar system with 13 months of 28 days each, aligned with Earth's equinox and lunar cycles. Experience time as nature intended.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Natural Calendar | Aligned with Earth & Moon">
+    <meta property="og:description"
+        content="A 13-month calendar system with 28-day months, synchronized with the Vernal Equinox and lunar phases.">
+    <meta property="og:image" content="https://example.com/preview.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Natural Calendar">
+    <meta name="twitter:description"
+        content="Experience a calendar aligned with natural rhythms - 13 months, 28 days each.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cosmos-background"></div>
+
+    <div class="app-layout">
+        <!-- Sidebar: Date Picker & Details -->
+        <aside class="sidebar glass-panel">
+            <header class="app-header">
+                <h1>Natural<br>Calendar</h1>
+                <p class="subtitle">Aligned with Earth & Moon</p>
+                <a href="about.html" class="doc-link">Read the Documentation →</a>
+            </header>
+
+            <div class="date-selector">
+                <input type="date" id="gregorianInput">
+            </div>
+
+            <div class="current-day-card">
+                <div class="card-header">
+                    <span id="selectedNaturalMonth">Vernis</span>
+                    <span id="selectedNaturalYear">Year 2026</span>
+                </div>
+                <div class="card-body">
+                    <span id="selectedNaturalDay">1</span>
+                </div>
+                <div class="card-footer">
+                    <span id="selectedGregorianDate">March 20, 2026</span>
+                </div>
+            </div>
+
+            <div class="moon-details">
+                <div class="moon-visual-large" id="sidebarMoonVisual">
+                    <div class="shadow-overlay"></div>
+                </div>
+                <div class="moon-text">
+                    <span id="moonPhaseName">New Moon</span>
+                    <span id="moonIllumination">0% Illumination</span>
+                </div>
+            </div>
+
+            <div class="esoteric-info">
+                <h3>Esoteric Insight</h3>
+                <p id="esotericText">New Moon in Vernis. A time for setting intentions and new beginnings.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content: Year Grid -->
+        <main class="calendar-view glass-panel">
+            <div class="view-header">
+                <h2 id="viewYearTitle">Natural Year 2026</h2>
+                <div class="view-controls">
+                    <button id="prevYearBtn">&lt;</button>
+                    <button id="todayBtn">Today</button>
+                    <button id="nextYearBtn">&gt;</button>
+                </div>
+            </div>
+
+            <div class="year-grid" id="yearGrid">
+                <!-- Grid will be injected here by script.js -->
+            </div>
+        </main>
+    </div>
+
+    <script src="calendar.js"></script>
+</body>
+
+</html>

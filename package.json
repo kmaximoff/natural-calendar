@@ -1,0 +1,23 @@
+{
+  "name": "natural-calendar",
+  "version": "1.0.0",
+  "description": "A 13-month lunar calendar system aligned with Earth and Moon cycles",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "calendar",
+    "lunar",
+    "moon-phases",
+    "natural-time",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}

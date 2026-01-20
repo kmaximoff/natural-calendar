@@ -1,0 +1,245 @@
+/**
+ * Natural Calendar - Stylesheet
+ * 
+ * A cosmic, glassmorphism design for the 13-month lunar calendar system.
+ * Features dark space theme with gold accents for special Aeterna days.
+ * 
+ * @author Natural Calendar Project
+ * @license MIT
+ */
+
+/* =============================================================================
+   CSS VARIABLES
+   ============================================================================= */
+
+:root {
+    --bg-deep: #05050b;
+    --bg-cosmic: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #05050b 100%);
+    --accent-glow: #a8c7fa;
+    --accent-primary: #e2e8f0;
+    --accent-gold: #ffd700;
+    --glass-bg: rgba(25, 25, 35, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-muted: #94a3b8;
+    --font-main: 'Outfit', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-deep);
+    background-image: var(--bg-cosmic);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    min-height: 100vh; /* Changed from height: 100vh */
+    overflow-x: hidden; /* Only hide horizontal overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cosmos-background {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    background: radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.8) 100%, transparent),
+                radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.5) 100%, transparent);
+}
+
+.app-layout {
+    display: flex;
+    width: 95vw;
+    height: 90vh; /* Keeps the app contained */
+    gap: 1.5rem;
+    max-width: 1600px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    flex-shrink: 0;
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+    line-height: 1;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+input[type="date"] {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+    color: white; padding: 0.8rem; border-radius: 8px;
+    font-family: var(--font-main); width: 100%; outline: none; text-align: center; color-scheme: dark;
+}
+
+.current-day-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+.card-header { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--accent-glow); }
+.card-body { font-size: 4rem; font-weight: 700; line-height: 1; margin: 1rem 0; }
+.card-footer { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Large Moon Visual in Sidebar */
+.moon-details { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.moon-visual-large { 
+    width: 120px; height: 120px; border-radius: 50%; 
+    background: #222; position: relative; overflow: hidden;
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
+}
+.moon-text { text-align: center; display: flex; flex-direction: column; }
+#moonPhaseName { font-weight: 600; color: var(--accent-primary); }
+#moonIllumination { font-size: 0.8rem; color: var(--text-muted); }
+
+.esoteric-info { padding-top: 1rem; border-top: 1px solid var(--glass-border); }
+.esoteric-info h3 { font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--accent-gold); }
+.esoteric-info p { font-size: 0.9rem; line-height: 1.5; color: var(--text-muted); }
+
+
+/* Main Calendar View */
+.calendar-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.view-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+}
+.view-header h2 { font-size: 1.8rem; font-weight: 300; }
+.view-controls button {
+    background: transparent; border: 1px solid var(--glass-border); color: #fff;
+    padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; transition: 0.2s;
+}
+.view-controls button:hover { background: rgba(255,255,255,0.1); }
+
+/* Year Grid */
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    height: 100%;
+}
+
+
+/* Month Component inside Grid */
+.month-card {
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+}
+
+.aeterna-card {
+    border: 2px solid var(--accent-gold);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.month-title { 
+    text-align: center; margin-bottom: 0.8rem; font-weight: 500; color: var(--accent-glow); 
+}
+
+.aeterna-card .month-title {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+}
+
+.week-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+}
+.week-header span:last-child { color: var(--accent-gold); }
+
+.mini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.mini-day {
+    aspect-ratio: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    position: relative;
+    background: rgba(255,255,255,0.02);
+}
+.mini-day:hover { background: rgba(255,255,255,0.1); }
+.mini-day.today { 
+    box-shadow: inset 0 0 0 1px var(--accent-gold);
+    font-weight: 600;
+}
+.mini-day.selected { background: var(--accent-glow); color: #000; font-weight: bold; }
+.mini-day.aeterna-day { 
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--accent-gold);
+    aspect-ratio: auto;
+}
+
+/* Tiny Moon Dot in Grid - 8 Phases */
+.moon-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    margin-top: 2px;
+    background: #333;
+}
+.moon-dot.new { background: #0a0a0a; border: 1px solid #444; }
+.moon-dot.wax-crescent { background: #555; }
+.moon-dot.first-quarter { background: #888; }
+.moon-dot.wax-gibbous { background: #bbb; }
+.moon-dot.full { background: #fff; box-shadow: 0 0 4px #fff; }
+.moon-dot.wan-gibbous { background: #bbb; }
+.moon-dot.last-quarter { background: #888; }
+.moon-dot.wan-crescent { background: #555; }
+
+/* Scrollbar */
+.year-grid::-webkit-scrollbar { width: 6px; }
+.year-grid::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* Glass Panel Utility */
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.doc-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--accent-glow);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent-glow);
+    opacity: 0.8;
+    transition: 0.2s;
+}
+.doc-link:hover {
+    opacity: 1;
+    border-bottom-style: solid;
+}
