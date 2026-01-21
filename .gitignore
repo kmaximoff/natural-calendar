@@ -1,8 +1,9 @@
 # Dependencies
 node_modules/
 
-# Build output (keep script.js for GitHub Pages)
-# script.js is intentionally tracked
+# Build output
+dist/
+calendar.js
 
 # OS files
 .DS_Store

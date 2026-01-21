@@ -27,72 +27,71 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/input.css">
 </head>
 
-<body>
-    <div class="cosmos-background"></div>
+<body class="h-screen overflow-hidden bg-background flex flex-col transition-colors duration-200 dark">
+    <!-- Cosmos background with stars (theme-aware opacity) -->
+    <div id="starsBackground" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none transition-opacity duration-200" style="background: radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.6) 100%, transparent), radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.4) 100%, transparent); opacity: var(--stars-opacity);"></div>
 
-    <div class="app-layout">
-        <!-- Sidebar: Date Picker & Details -->
-        <aside class="sidebar glass-panel">
-            <header class="app-header">
-                <h1>Natural<br>Calendar</h1>
-                <p class="subtitle">Aligned with Earth & Moon</p>
-                <a href="about.html" class="doc-link">Read the Documentation →</a>
-            </header>
-
-            <div class="date-selector">
-                <input type="date" id="gregorianInput">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-card/80 backdrop-blur-xl px-6 py-4">
+        <div class="flex items-center justify-between max-w-[1800px] mx-auto">
+            <!-- Left: Logo and Title -->
+            <div class="flex items-center gap-4">
+                <h1 class="text-2xl font-extralight uppercase text-foreground">Natural Calendar</h1>
+                <a href="about.html" class="text-xs text-accent hover:opacity-80 transition-colors">About</a>
             </div>
 
-            <div class="current-day-card">
-                <div class="card-header">
-                    <span id="selectedNaturalMonth">Vernis</span>
-                    <span id="selectedNaturalYear">Year 2026</span>
-                </div>
-                <div class="card-body">
-                    <span id="selectedNaturalDay">1</span>
-                </div>
-                <div class="card-footer">
-                    <span id="selectedGregorianDate">March 20, 2026</span>
+            <!-- Center: Date Navigation -->
+            <div class="flex items-center gap-4">
+                <button id="prevBtn" class="bg-secondary text-secondary-foreground w-10 h-10 rounded-md cursor-pointer hover:bg-secondary/80 transition-all flex items-center justify-center">
+                    <span class="text-lg">‹</span>
+                </button>
+                <button id="nextBtn" class="bg-secondary text-secondary-foreground w-10 h-10 rounded-md cursor-pointer hover:bg-secondary/80 transition-all flex items-center justify-center">
+                    <span class="text-lg">›</span>
+                </button>
+                <div class="ml-4">
+                    <button id="dateDisplay" class="text-foreground text-lg font-light hover:bg-secondary px-4 py-2 rounded-md transition-all cursor-pointer">Natural Year 2026</button>
                 </div>
             </div>
 
-            <div class="moon-details">
-                <div class="moon-visual-large" id="sidebarMoonVisual">
-                    <div class="shadow-overlay"></div>
-                </div>
-                <div class="moon-text">
-                    <span id="moonPhaseName">New Moon</span>
-                    <span id="moonIllumination">0% Illumination</span>
-                </div>
-            </div>
-
-            <div class="esoteric-info">
-                <h3>Esoteric Insight</h3>
-                <p id="esotericText">New Moon in Vernis. A time for setting intentions and new beginnings.</p>
-            </div>
-        </aside>
-
-        <!-- Main Content: Year Grid -->
-        <main class="calendar-view glass-panel">
-            <div class="view-header">
-                <h2 id="viewYearTitle">Natural Year 2026</h2>
-                <div class="view-controls">
-                    <button id="prevYearBtn">&lt;</button>
-                    <button id="todayBtn">Today</button>
-                    <button id="nextYearBtn">&gt;</button>
+            <!-- Right: View Switcher and Controls -->
+            <div class="flex items-center gap-4">
+                <button id="todayBtn" class="bg-secondary text-secondary-foreground px-6 py-2 rounded-md cursor-pointer hover:bg-secondary/80 transition-all font-medium">Today</button>
+                <button id="themeToggle" class="bg-secondary text-secondary-foreground w-10 h-10 rounded-md cursor-pointer hover:bg-secondary/80 transition-all flex items-center justify-center" title="Toggle light/dark mode">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <div class="flex bg-muted p-1 rounded-lg gap-1">
+                    <button id="viewYear" class="px-4 py-2 text-sm rounded-md transition-all bg-accent text-accent-foreground font-semibold">Year</button>
+                    <button id="viewMonth" class="px-4 py-2 text-sm rounded-md transition-all text-muted-foreground hover:text-foreground hover:bg-secondary">Month</button>
+                    <button id="viewWeek" class="px-4 py-2 text-sm rounded-md transition-all text-muted-foreground hover:text-foreground hover:bg-secondary">Week</button>
+                    <button id="viewDay" class="px-4 py-2 text-sm rounded-md transition-all text-muted-foreground hover:text-foreground hover:bg-secondary">Day</button>
                 </div>
             </div>
+        </div>
+    </nav>
 
-            <div class="year-grid" id="yearGrid">
-                <!-- Grid will be injected here by script.js -->
-            </div>
-        </main>
-    </div>
+    <!-- Main Calendar Area -->
+    <main class="flex-1 overflow-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-track]:bg-transparent">
+        <div id="calendarContainer" class="w-full p-6 pb-20">
+            <!-- Calendar views will be rendered here -->
+        </div>
+    </main>
 
-    <script src="calendar.js"></script>
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-card/90 backdrop-blur-sm py-3 px-8 z-10">
+        <div class="max-w-[1800px] mx-auto text-center">
+            <p class="text-muted-foreground text-xs">
+                Created by <a href="https://www.maximoff.studio" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline font-semibold">maximoff.studio</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Hidden date picker for date selection -->
+    <input type="date" id="hiddenDatePicker" class="hidden">
+
+    <script type="module" src="/src/calendar.ts"></script>
 </body>
 
 </html>
