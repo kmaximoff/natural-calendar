@@ -109,4 +109,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
+**Created by [maximoff studio](https://www.maximoff.studio)**
+
 *Aligned with Earth & Moon* 🌍🌙

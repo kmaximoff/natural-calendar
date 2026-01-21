@@ -16,7 +16,7 @@
     "natural-time",
     "typescript"
   ],
-  "author": "",
+  "author": "maximoff studio",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.3.0",
