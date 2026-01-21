@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/natural-calendar/', // GitHub Pages base path
   root: '.',
   publicDir: 'public',
   build: {

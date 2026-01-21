@@ -28,7 +28,7 @@ A **13-month lunar calendar system** aligned with Earth's natural rhythms and lu
 
 ## 🚀 Live Demo
 
-[View Live Demo →](https://yourusername.github.io/natural-calendar)
+[View Live Demo →](https://kmaximoff.github.io/natural-calendar)
 
 ## 💻 Development
 
@@ -41,7 +41,7 @@ A **13-month lunar calendar system** aligned with Earth's natural rhythms and lu
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/natural-calendar.git
+git clone https://github.com/kmaximoff/natural-calendar.git
 cd natural-calendar
 
 # Install dependencies
